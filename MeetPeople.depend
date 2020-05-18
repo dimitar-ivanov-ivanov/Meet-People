@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1589551221 source:d:\programming\c\ТУ\Курсова 2ри семестър\meetpeople\main.c
+	"main.h"
+
+1589551203 d:\programming\c\ТУ\Курсова 2ри семестър\meetpeople\main.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<limits.h>
+	<time.h>
+

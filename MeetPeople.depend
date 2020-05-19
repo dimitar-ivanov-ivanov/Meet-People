@@ -9,3 +9,41 @@
 	<limits.h>
 	<time.h>
 
+1589896921 source:d:\programming\c\ТУ\Курсова - meet people 2ри семестър\meetpeople\main.c
+	"meet.h"
+
+1589559596 d:\programming\c\ТУ\Курсова - meet people 2ри семестър\meetpeople\main.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<limits.h>
+	<time.h>
+
+1589896754 source:d:\programming\c\ТУ\Курсова - meet people 2ри семестър\meetpeople\meet.c
+	"meet.h"
+
+1589897573 d:\programming\c\ТУ\Курсова - meet people 2ри семестър\meetpeople\meet.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<limits.h>
+	<time.h>
+	"messages.h"
+
+1589897808 d:\programming\c\ТУ\Курсова - meet people 2ри семестър\meetpeople\messages.h
+
+1589895386 source:d:\programming\c\ТУ\Курсова - meet people 2ри семестър\meetpeople\output.c
+	"meet.h"
+
+1589895202 source:d:\programming\c\ТУ\Курсова - meet people 2ри семестър\meetpeople\input.c
+	"meet.h"
+
+1589895930 source:d:\programming\c\ТУ\Курсова - meet people 2ри семестър\meetpeople\outputperson.c
+	"meet.h"
+
+1589897167 source:d:\programming\c\ТУ\Курсова - meet people 2ри семестър\meetpeople\inputdata.c
+	"meet.h"
+
+1589897764 source:d:\programming\c\ТУ\Курсова - meet people 2ри семестър\meetpeople\inputperson.c
+	"meet.h"
+

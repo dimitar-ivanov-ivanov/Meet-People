@@ -31,10 +31,23 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
+		<Unit filename="inputData.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="inputPerson.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Unit filename="main.c">
 			<Option compilerVar="CC" />
 		</Unit>
-		<Unit filename="main.h" />
+		<Unit filename="meet.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="meet.h" />
+		<Unit filename="messages.h" />
+		<Unit filename="outputPerson.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

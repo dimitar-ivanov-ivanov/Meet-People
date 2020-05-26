@@ -48,6 +48,9 @@
 		<Unit filename="outputPerson.c">
 			<Option compilerVar="CC" />
 		</Unit>
+		<Unit filename="seedData.c">
+			<Option compilerVar="CC" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<envvars />

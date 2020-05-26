@@ -4,10 +4,6 @@ sPerson inputPerson() {
     sPerson person;
 
     fflush(stdin);
-    printf("Enter ID: ");
-    scanf("%d",&person.ID);
-    fflush(stdin);
-
     printf("Enter full name: ");
     gets(person.name);
     fflush(stdin);
@@ -26,21 +22,14 @@ sPerson inputPerson() {
 
 void inputGender(sPerson *person) {
     char gender[LEN];
+    char *possibleGenders[] = {"Male","Female"};
 
-    //put it in a endless loop to make sure the right amount is processed
-    while(1) {
-        printf("Enter gender(Male/or Female): ");
-        fflush(stdin);
-        gets(gender);
-        if(!strcmp(gender,"Male")) {
-            person->gender = Male;
-            break;
-        }
-        if(!strcmp(gender,"Female")) {
-            person->gender = Female;
-            break;
-        }
-        printf("%s",ERRORGENDER);
+    getString("Enter gender(Male/or Female): ",ERRORGENDER,2,possibleGenders,gender);
+    if(!strcmp(gender,"Male")) {
+        person->gender = Male;
+    }
+    if(!strcmp(gender,"Female")) {
+        person->gender = Female;
     }
 }
 
@@ -58,24 +47,16 @@ void inputDate(sPerson *person) {
 
 void inputStatus(sPerson *person) {
     char personStatus[LEN];
-    while(1) {
-        printf("Enter engagement status (Single , Engaged , Married): ");
-        fflush(stdin);
-        gets(personStatus);
-
-        if(!strcmp(personStatus,"Single")) {
-            person->status = Single;
-            break;
-        }
-        if(!strcmp(personStatus,"Engaged")) {
-            person->status = Engaged;
-            break;
-        }
-        if(!strcmp(personStatus,"Married")) {
-            person->status = Married;
-            break;
-        }
-        printf("%s",ERRORSTATUS);
+    char *possibleStatus[] = {"Single","Engaged","Married"};
+    getString("Enter engagement status (Single , Engaged , Married): ",ERRORSTATUS,3,possibleStatus,personStatus);
+    if(!strcmp(personStatus,"Single")) {
+        person->status = Single;
+    }
+    if(!strcmp(personStatus,"Engaged")) {
+        person->status = Engaged;
+    }
+    if(!strcmp(personStatus,"Married")) {
+        person->status = Married;
     }
 }
 
@@ -91,7 +72,6 @@ void inputQuestions(sPerson *person) {
 
     person->questionsCount = 0;
     person->maxQuestionResult = 0;
-    questionsSize = numQuestions;
 
     if(NULL == (person->questions = (sQuestion *)malloc(questionsSize * sizeof(sQuestion)))) {
         printf("%s",ERRORMEMALLOC);
@@ -105,15 +85,7 @@ void inputQuestions(sPerson *person) {
         gets(question.text);
 
         //the question weight must be from 0 to 1
-        while(1) {
-            printf("----Enter question weight: (between 0 and 1): ");
-            fflush(stdin);
-            scanf("%lf",&question.weight);
-            if(!(question.weight < 0 || question.weight > 1)) {
-                break;
-            }
-            printf("%s",ERRORQUESTIONWEIGHT);
-        }
+        question.weight =  getNum("----Enter question weight: (between 0 and 1): ",ERRORQUESTIONWEIGHT,MINQUESTIONWEIGHT,MAXQUESTIONWEIGHT);
 
         //try to get the maximum wieght of all 4 answers to determine the max multiplication of the current wieght of question and answer
         maxAnswerWeight = INT_MIN;
@@ -125,16 +97,7 @@ void inputQuestions(sPerson *person) {
             gets(answer.text);
 
             //asnwer weight cannot be negative
-            while(1) {
-                printf("--------Enter answer weight: ");
-                fflush(stdin);
-                scanf("%d",&answer.weight);
-                if(answer.weight >= 0) {
-                    break;
-                } else {
-                    printf("%s",ERRORANSWERWEIGHT);
-                }
-            }
+            answer.weight = getNum("--------Enter answer weight: ",ERRORANSWERWEIGHT,MINANSWERWEIGHT,MAXANSWERWEIGHT);
             question.answers[j] = answer;
 
             if(answer.weight > maxAnswerWeight) {
@@ -173,4 +136,19 @@ double getNum(char *inputMessage,char *errorMessage,double minVal,double maxVal)
     }
 
     return num;
+}
+
+void getString(char *inputMessage,char *errorMessage,int n,char *validVals[],char str[LEN]) {
+    while(1) {
+        printf("%s",inputMessage);
+        fflush(stdin);
+        gets(str);
+
+        for(int i = 0; i < n; i++) {
+            if(!strcmp(str,validVals[i])) {
+                return;
+            }
+        }
+        printf("%s",errorMessage);
+    }
 }

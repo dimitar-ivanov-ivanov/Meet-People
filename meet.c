@@ -69,7 +69,9 @@ void addElementAtEnd(sPerson *person) {
     }
 
     ptemp->next = pnewElement;
+    totalPeople++;
 }
+
 
 sNode * createElement(sPerson *person) {
     sNode* tempP = (sNode *)malloc(sizeof(sNode));
@@ -85,6 +87,12 @@ sNode * createElement(sPerson *person) {
 
 void askPersonQuestions() {
     sPerson *person;
+    srand(time(NULL));
+
+    if(totalPeople == 0) {
+        printf("%s",NOPEOPLE);
+        return;
+    }
 
     while(1) {
         int index = rand() % totalPeople;
@@ -135,6 +143,8 @@ void askPersonQuestions() {
     printf("User Result: %lf/%lf\n",totalWeight,person->maxQuestionResult);
     if(totalWeight == person->maxQuestionResult) {
         printf("Congrats! you have perfectly answered %s's questions!\n",person->name);
+    } else if(totalWeight >= person->maxQuestionResult * 80 / 100) {
+        printf("You have succeeded at answering some of %s's questions.\n",person->name);
     } else {
         printf("You have failed at answering %s's questions try again!\n",person->name);
     }
@@ -152,7 +162,6 @@ sPerson * getPerson(int index) {
     }
     return NULL;
 }
-
 
 void removePerson(int ID) {
     sNode *ptemp = head;
@@ -185,6 +194,7 @@ void removePerson(int ID) {
             free(ptemp2->person.questions);
             free(ptemp2);
             totalPeople--;
+            printf("%d\n",totalPeople);
             return;
         }
         ptemp = ptemp->next;

@@ -12,7 +12,12 @@
 #define INTEREST 250
 #define NUMOFANSWERS 4
 #define SIZEINCREMENT 5
-#define FILENAME "people.txt"
+#define MINQUESTIONWEIGHT 0
+#define MAXQUESTIONWEIGHT 1
+#define MINANSWERWEIGHT 0
+#define MAXANSWERWEIGHT 100
+#define MAXID 5000
+#define FILENAME "people.bin"
 
 typedef enum {Male = 0, Female = 1} Gender;
 typedef enum {Single=0, Engaged=1, Married=2} Status;
@@ -54,6 +59,8 @@ typedef struct node {
 void runProgram();
 void writeDataInFile(char *fileName);
 void readDataFromFile(char *fileName);
+void seedData(int n);
+int generateRandNum(int lower,int upper);
 void personMenu();
 sPerson inputPerson();
 void inputGender(sPerson *person);
@@ -62,8 +69,9 @@ void inputStatus(sPerson *person);
 void inputQuestions(sPerson *person);
 void addQuestion(sPerson *person,sQuestion *question);
 double getNum(char *inputMessage,char *errorMessage,double minVal,double maxVal);
+void getString(char *inputMessage,char *errorMessage,int n,char *validVals[],char str[LEN]);
 int numInRange(double a,double b,double c);
-void printAllPeople();
+void printAllPeople(sNode *head);
 void printPerson(sPerson *person,int restriction);
 int findPerson(unsigned int id);
 void addElementAtEnd(sPerson *person);
@@ -73,8 +81,8 @@ void askPersonQuestions();
 sPerson * getPerson(int index);
 void DeleteList(void);
 
-static sNode *head = NULL;
-static int totalPeople;
-static int questionsSize;
+extern sNode *head;
+extern int totalPeople;
+extern int questionsSize;
 
 #endif // MEET_H_INCLUDED

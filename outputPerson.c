@@ -1,6 +1,6 @@
 #include "meet.h"
 
-void printAllPeople() {
+void printAllPeople(sNode *head) {
     sNode * ptemp = head;
     if(ptemp == NULL) {
         printf("%s",NOPEOPLE);
@@ -28,8 +28,8 @@ void printPerson(sPerson *person,int restriction) {
         strcpy(gender,"Female");
     }
 
-    printf("Gender %s\n",gender);
-    printf("Date of birth %02d.%02d.%d\n",person->dateOfBirth.day,person->dateOfBirth.month,person->dateOfBirth.year);
+    printf("Gender: %s\n",gender);
+    printf("Date of birth: %02d.%02d.%d\n",person->dateOfBirth.day,person->dateOfBirth.month,person->dateOfBirth.year);
     printf("Description: %s\n",person->interests);
 
     if(person->status == Single) {
@@ -59,3 +59,4 @@ void printPerson(sPerson *person,int restriction) {
         }
     }
 }
+

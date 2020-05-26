@@ -3,7 +3,6 @@
 void writeDataInFile(char *fileName) {
     FILE *fp;
     sPerson person;
-
     if((fp = fopen(fileName,"wb")) == NULL) {
         printf("%s",ERROROPENING);
         exit(1);
@@ -15,6 +14,7 @@ void writeDataInFile(char *fileName) {
     for(int i = 0; i < totalPeople; i++) {
         printf("Person %d\n",i+1);
         person = inputPerson();
+
         if(fwrite(&person,sizeof(sPerson),1,fp) != 1) {
             printf("%s",ERRORWRITE);
             exit(2);
@@ -30,6 +30,7 @@ void writeDataInFile(char *fileName) {
 void readDataFromFile(char *fileName) {
     FILE *fp;
     sPerson person;
+    srand(time(NULL));
 
     if((fp = fopen(fileName,"rb")) == NULL) {
         printf("%s",ERROROPENING);
@@ -42,6 +43,7 @@ void readDataFromFile(char *fileName) {
         if(fread(&person,sizeof(sPerson),1,fp) != 1) {
             break;
         }
+        person.ID = rand() % MAXID;
         if(!findPerson(person.ID)) {
             addElementAtEnd(&person);
         } else {
